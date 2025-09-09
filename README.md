@@ -1,27 +1,65 @@
 # Analytics Tracking API
 
-![Python](https://img.shields.io/badge/python-3.9-blue?logo=python) ![Flask](https://img.shields.io/badge/flask-2.3.3-orange?logo=flask) ![Docker](https://img.shields.io/badge/docker-20.10-blue?logo=docker) ![Cloud Run](https://img.shields.io/badge/cloud_run-deployed-lightgrey) ![GitHub Actions](https://img.shields.io/badge/CI%2FCD-github_actions-brightgreen)
+![Python](https://img.shields.io/badge/python-3.9-blue?logo=python)
+![Flask](https://img.shields.io/badge/flask-2.3.3-orange?logo=flask)
+![Docker](https://img.shields.io/badge/docker-20.10-blue?logo=docker)
+![Cloud Run](https://img.shields.io/badge/cloud_run-deployed-lightgrey)
+![GitHub Actions](https://img.shields.io/badge/CI%2FCD-github_actions-brightgreen)
 
 ---
 
-## Overview
+## 📌 Overview
 
 The **Analytics Tracking API** is a secure, scalable, and cloud-native service designed to capture events and metadata for analytics purposes. It is containerized with Docker and deployed on **Google Cloud Run**, following best practices in **structured logging, token-based authentication, and cloud observability**. This API is designed to be **flexible and extensible**, allowing integration with any analytics pipeline, data warehouse, or custom dashboard.
 
 ---
 
-## Architecture Diagram
+## 📁 Project Structure
 
-```text
-Client --> API Gateway (Token Auth) --> Flask App --> Cloud Logging / BigQuery
-                |
-                v
-           Structured Logs
+<pre>
+analytics-tracking/
+├── Dockerfile
+├── main.py
+├── requirements.txt
+├── tests/
+│   └── test_api.py
+├── README.md
+└── .gitignore
+</pre>
+
+---
+
+## 🏗️ Architecture
+
+```
+      ┌─────────┐
+      │ Client  │
+      │ (Any)   │
+      └────┬────┘
+           │ POST /track (X-API-Key)
+           ▼
+    ┌───────────────┐
+    │ Flask API      │
+    │ - Token Auth   │
+    │ - Validation   │
+    │ - Logging      │
+    └─────┬─────────┘
+          │
+┌─────────┴─────────┐
+│ Cloud Run / Docker │
+└─────┬─────────────┘
+      │ Structured Logs
+      ▼
+┌───────────────┐
+│ BigQuery /    │
+│ Cloud Logging │
+└───────────────┘
+
 ```
 
 ---
 
-## Key Features
+## ⚡ Key Features
 
 * RESTful API built with **Flask**
 * **Token-based authentication** for secure access
@@ -33,7 +71,7 @@ Client --> API Gateway (Token Auth) --> Flask App --> Cloud Logging / BigQuery
 
 ---
 
-## Example Payload
+## 📊 Example Payload
 
 ```json
 {
@@ -49,7 +87,7 @@ Client --> API Gateway (Token Auth) --> Flask App --> Cloud Logging / BigQuery
 
 ---
 
-## API Endpoints
+## 🛠️ API Endpoints
 
 ### POST /track
 **Description:** Accepts analytics events from clients.
@@ -75,7 +113,7 @@ API OK
 
 ---
 
-## Deployment
+## 🚀 Deployment
 
 ### Using Docker
 ```bash
@@ -95,7 +133,7 @@ gcloud run deploy analytics-api \
 
 ---
 
-## CI/CD (GitHub Actions)
+## 🤖 CI/CD (GitHub Actions)
 
 * Automatic Docker build on push
 * Optional deployment to Cloud Run
@@ -105,22 +143,7 @@ gcloud run deploy analytics-api \
 
 ---
 
-## Project Structure
-
-```
-analytics-tracking/
-├── Dockerfile
-├── main.py
-├── requirements.txt
-├── tests/
-│   └── test_api.py
-├── README.md
-└── .gitignore
-```
-
----
-
-## Best Practices Followed
+## ✅ Best Practices
 
 * **Structured Logging:** Logs include raw and parsed JSON payloads for observability
 * **Token Authentication:** Secures API endpoints for production use
@@ -133,7 +156,7 @@ analytics-tracking/
 
 ---
 
-## Notes
+## 🤝 Notes
 
 * Designed as a **general-purpose analytics tracking solution**
 * Focused on **security, scalability, observability, and cloud-native best practices**
@@ -141,6 +164,6 @@ analytics-tracking/
 
 ---
 
-## License
+## 📄 License
 
-MIT License
+MIT © 2025 - Built with ❤️ by [R0s3mrcx](https://github.com/R0s3mrcx)
